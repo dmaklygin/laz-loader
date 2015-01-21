@@ -36,6 +36,8 @@ module.exports = function(grunt) {
       bootstrap: {
         src: [
           './bower_components/underscore/underscore.js',
+          './bower_components/backbone/backbone.js',
+          './public/js/config.js',
           './public/js/*/*.js',
           './public/js/app.js'
         ],
@@ -85,7 +87,7 @@ module.exports = function(grunt) {
 
     watch: {
       scripts: {
-        files: ['./public/js/*.js'],
+        files: ['./public/js/*.js', './public/js/**/*.js'],
         tasks: ['script'],
         options: {
           spawn: false

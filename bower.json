@@ -12,7 +12,8 @@
     "nodejs"
   ],
   "dependencies": {
-    "underscore": "~1.7.0"
+    "underscore": "~1.7.0",
+    "backbone": "~1.1.2"
   },
   "license": "MIT",
   "ignore": [
