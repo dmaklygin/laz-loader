@@ -11,6 +11,9 @@
     "js",
     "nodejs"
   ],
+  "dependencies": {
+    "underscore": "~1.7.0"
+  },
   "license": "MIT",
   "ignore": [
     "**/.*",
