@@ -1,0 +1,22 @@
+{
+  "name": "lazad-uploader",
+  "version": "0.0.1",
+  "authors": [
+    "Dmitry Maklygin <d.maklygin@gmail.com>"
+  ],
+  "description": "client libraries for project",
+  "main": "./bin/www.js",
+  "keywords": [
+    "express",
+    "js",
+    "nodejs"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
