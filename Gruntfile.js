@@ -36,6 +36,7 @@ module.exports = function(grunt) {
       bootstrap: {
         src: [
           './bower_components/underscore/underscore.js',
+          './bower_components/jquery/dist/jquery.min.js',
           './bower_components/backbone/backbone.js',
           './public/js/config.js',
           './public/js/*/*.js',
