@@ -35,6 +35,7 @@ module.exports = function(grunt) {
       },
       bootstrap: {
         src: [
+          './bower_components/underscore/underscore.js',
           './public/js/*/*.js',
           './public/js/app.js'
         ],
@@ -57,27 +58,44 @@ module.exports = function(grunt) {
       options: {
         banner: '<%= banner %>'
       },
-      developer: {
-        options: {
-          beautify: true,
-          compress: false,
-          mangle: {
-            except: ['jQuery', 'Modernizr', 'mousewheel', 'lightbox']
-          }
-        },
-        files: {
-          './public/js/all.package.js': ['<%= concat.bootstrap.dest %>']
-        }
-      },
+      //developer: {
+      //  options: {
+      //    beautify: true,
+      //    compress: false,
+      //    mangle: {
+      //      except: ['jQuery', 'Modernizr']
+      //    }
+      //  },
+      //  files: {
+      //    './public/js/all.package.js': ['<%= concat.bootstrap.dest %>']
+      //  }
+      //},
       production: {
         options: {
           compress: false,
           mangle: {
-            except: ['jQuery', 'Modernizr', 'mousewheel', 'lightbox']
+            except: ['jQuery', 'Modernizr']
           }
         },
         files: {
           './public/js/all.min.js': ['<%= concat.bootstrap.dest %>']
+        }
+      }
+    },
+
+    watch: {
+      scripts: {
+        files: ['./public/js/*.js'],
+        tasks: ['script'],
+        options: {
+          spawn: false
+        }
+      },
+      css: {
+        files: ['./public/css/**/*.styl'],
+        tasks: ['stylus'],
+        options: {
+          spawn: false
         }
       }
     }
@@ -89,11 +107,22 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-stylus');
+  grunt.loadNpmTasks('grunt-contrib-watch');
 
 
   grunt.registerTask('test', ['jshint']);
+  // Javascript task
+  grunt.registerTask('script', ['concat', 'uglify']);
   // Full distribution task.
-  grunt.registerTask('dist', ['clean-pattern', 'concat', 'stylus', 'uglify']);
+  grunt.registerTask('dist', ['clean-pattern', 'script', 'stylus']);
   // Default task.
   grunt.registerTask('default', ['dist']);
+  // Watch task
+  //grunt.registerTask('watch', ['script']);
+
+  grunt.event.on('watch', function(action, filepath, target) {
+    grunt.log.writeln(target + ': ' + filepath + ' has ' + action);
+  });
+
+  return grunt;
 };
