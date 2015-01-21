@@ -1,6 +1,8 @@
 // Items Collection
 App.Collections.Items = Backbone.Collection.extend({
 
+  model: App.Models.Item,
+
   /**
    * Loading items information by link
    * @param {array} links
@@ -18,8 +20,9 @@ App.Collections.Items = Backbone.Collection.extend({
         .fail(function() {
           console.log('unable to load item', link);
         })
-        .done(function() {
-          console.log('response data from server', arguments);
+        .done(function(response) {
+          // adding new model to collection
+          _this.add(_.extend({ id: _.uniqueId() }, response), { parse: true });
         });
     });
   },

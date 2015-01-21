@@ -17,7 +17,7 @@ module.exports = function(req, res, next) {
   }
 
   request
-    .get(link)
+    .get(link, { headers: { 'User-Agent': 'User-Agent:Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_0)' } })
     .on('response', function(response) {
       response.setEncoding('utf8');
       response

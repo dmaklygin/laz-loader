@@ -12,8 +12,8 @@ App.Views.Form = Backbone.View.extend({
   initialize: function() {
     // Caching jQ elements
     this.links = [];
-    this.links.push(this.$el.find('.link_num_1'));
-    this.links.push(this.$el.find('.link_num_2'));
+    this.links.push(this.$el.find('.search-form__link_num_1'));
+    this.links.push(this.$el.find('.search-form__link_num_2'));
   },
 
   /**
