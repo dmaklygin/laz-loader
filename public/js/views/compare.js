@@ -24,7 +24,13 @@ App.Views.Compare = App.Views.View.extend({
       });
     });
 
-    return _.extend(App.Views.View.prototype.serialize.apply(this, arguments), { specifications: Object.keys(specifications) });
+    var data = App.Views.View.prototype.serialize.apply(this, arguments);
+
+    return _.extend(data, {
+      specsKeys: Object.keys(specifications),
+      // array of items with cpecs
+      itemsSpecs: this.collection.pluck('specifications')
+    });
   }
 
 });

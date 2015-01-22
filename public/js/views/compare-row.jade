@@ -1,12 +1,16 @@
-mixin compare-row(specification, items)
-  tr.compare__row
-    td.compare__cell.compare__cell_type_name
-      div.compare__label= specification
+mixin compare-row(specKeys, items, options)
+  - var options = options || {}
+  - var classes = ['compare__row', options.className]
+  - !options.showLabel && classes.push('compare__row_hover_no')
+  tr(class=classes)
+    td.compare__cell.compare__cell_type_label
+      // @todo should be a localization
+      div.compare__label= options.showLabel ? (options.label || specKeys) : ''
       div.compare__hidden
-        div.compare__hidden-label= specification
+        div.compare__hidden-label= options.label || specKeys
     - each item in items
-      if specification == 'image'
+      if (options.type == 'image')
         td.compare__cell
           img.compare__image(src!=item.image)
       else
-        td.compare__cell= item[specification] || item.specifications[specification] || '—'
+        td.compare__cell= item[specKeys] || '—'

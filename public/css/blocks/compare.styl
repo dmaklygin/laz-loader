@@ -1,5 +1,9 @@
 .compare
   display: block
+  margin $gapSize 0 0 0
+  padding: 20px
+  background: #fff
+  box-shadow 0 0 0 1px rgba(0,0,0,.06)
 
 .compare__container
   position: relative
@@ -23,18 +27,18 @@
   padding: 5px 10px
   vertical-align: top
 
-.compare__cell_type_name
+.compare__cell_type_label
   width: 0
   min-width: 0
   max-width: 0
   padding: 0
   vertical-align: top !important
 
-.compare__cell_type_name+.compare__cell
+.compare__cell_type_label+.compare__cell
   padding: 5px 10px 5px 8px
   border-left: 2px solid #fff
 
-.compare__cell_type_name .compare__label
+.compare__cell_type_label .compare__label
   position: absolute
   top: auto
   left: 0
@@ -45,7 +49,7 @@
   padding: 5px 5px 0 10px
   background-color: #fff
 
-.compare__cell_type_name .compare__hidden
+.compare__cell_type_label .compare__hidden
   overflow: hidden
   width: 0
 
@@ -64,3 +68,6 @@
 .compare__row.compare__row_hover_no:hover,
 .compare__row.compare__row_hover_no:hover .compare__label
   background #fff
+
+.compare__row_type_title .compare__cell
+  font-weight bold

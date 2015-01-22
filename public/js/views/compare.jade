@@ -3,7 +3,8 @@ include compare-row
   if items.length
     .compare__table-wrapper
       table.compare__table
-        +compare-row('title', items)
-        +compare-row('image', items)
-        - each specification in specifications
-          +compare-row(specification, items)
+        +compare-row('title', items, { className: 'compare__row_type_title' })
+        +compare-row('price', items, { label: 'Price', showLabel: true })
+        +compare-row('image', items, { type: 'image' })
+        - each specKeys in specsKeys
+          +compare-row(specKeys, itemsSpecs, { showLabel: true })
