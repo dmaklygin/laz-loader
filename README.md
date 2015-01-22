@@ -20,7 +20,7 @@ Once that's done, you can run watcher
 grunt watch
 ```
 
-To start server
+To start the server
 
 ```bash
 npm start
