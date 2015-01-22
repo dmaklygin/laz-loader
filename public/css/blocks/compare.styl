@@ -1,16 +1,66 @@
 .compare
-  display block
+  display: block
 
 .compare__container
-  position relative
-  overflow hidden
+  position: relative
+  overflow: hidden
 
 .compare__table-wrapper
-  margin 0 0 0 150px
+  margin: 0 0 0 225px
 
-  overflow-x auto
-  overflow-y hidden
+  overflow-x: auto
+  overflow-y: hidden
 
 .compare__table
-  width auto
-  table-layout fixed
+  width: auto
+  table-layout: fixed
+
+.compare__cell
+  box-sizing border-box
+  width: 200px
+  min-width: 200px
+  max-width: 200px
+  padding: 5px 10px
+  vertical-align: top
+
+.compare__cell_type_name
+  width: 0
+  min-width: 0
+  max-width: 0
+  padding: 0
+  vertical-align: top !important
+
+.compare__cell_type_name+.compare__cell
+  padding: 5px 10px 5px 8px
+  border-left: 2px solid #fff
+
+.compare__cell_type_name .compare__label
+  position: absolute
+  top: auto
+  left: 0
+  width: 210px
+  min-width: 210px
+  max-width: 210px
+  height: 500px
+  padding: 5px 5px 0 10px
+  background-color: #fff
+
+.compare__cell_type_name .compare__hidden
+  overflow: hidden
+  width: 0
+
+.compare__hidden-label
+  width: 210px
+  padding: 5px 0
+
+.compare__image
+  display: block
+  width 180px
+
+.compare__row:hover,
+.compare__row:hover .compare__label
+  background: #f6f5f3
+
+.compare__row.compare__row_hover_no:hover,
+.compare__row.compare__row_hover_no:hover .compare__label
+  background #fff

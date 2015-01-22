@@ -1,10 +1,20 @@
+@import "variables"
+
 body
-  padding: 50px
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif
-a
-  color: #00B7FF
+  background: $greyColor
+  padding: 10px
+  font: $fontSize Helvetica, Arial, sans-serif
+
+.page
+  font-size: $fontSize
+  -webkit-font-smoothing: subpixel-antialiased
 
 
+@import "mixins"
 
 @import "blocks/button"
 @import "blocks/input"
+
+@import "blocks/content"
+@import "blocks/form"
+@import "blocks/compare"

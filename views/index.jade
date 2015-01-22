@@ -1,11 +1,18 @@
 extends layout
 
 block content
-  h1= title
-  div.search-form
-    input.input.search-form__link.search-form__link_num_1(type="text")
-    input.input.search-form__link.search-form__link_num_2(type="text")
-    input.button.button_type_upload(type="button" value="Upload")
+  .content
+    .content__container
+      h1.content__title= title
+      div.form
+        .form__description Enter links in these fields
+        .form__controls
+          .input
+            label.input__label(for="form__link_num_1") Link #1
+            input.input__element.form__link.form__link_num_1(type="text" id="form__link_num_1" value="http://www.lazada.vn/dtdd-a8-2sim-den-hang-nhap-khau-266089.html")
+          .input
+            label.input__label(for="form__link_num_2") Link #2
+            input.input__element.form__link.form__link_num_2(type="text" id="form__link_num_2" value="http://www.lazada.vn/dtdd-a8-64mb-green-hang-nhap-khau-218569.html")
+          input.button.button_type_upload(type="button" value="Upload")
 
-
-  div.compare
+      div.compare

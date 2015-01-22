@@ -3,6 +3,7 @@ include compare-row
   if items.length
     .compare__table-wrapper
       table.compare__table
-        +compare-row(specification, items)
+        +compare-row('title', items)
+        +compare-row('image', items)
         - each specification in specifications
           +compare-row(specification, items)

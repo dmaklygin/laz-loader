@@ -3,7 +3,7 @@
  */
 App.Views.Form = App.Views.View.extend({
 
-  el: '.search-form',
+  el: '.form',
 
   events: {
     'click .button_type_upload': 'load'
@@ -12,8 +12,8 @@ App.Views.Form = App.Views.View.extend({
   initialize: function() {
     // Caching jQ elements
     this.links = [];
-    this.links.push(this.$el.find('.search-form__link_num_1'));
-    this.links.push(this.$el.find('.search-form__link_num_2'));
+    this.links.push(this.$el.find('.form__link_num_1'));
+    this.links.push(this.$el.find('.form__link_num_2'));
   },
 
   /**

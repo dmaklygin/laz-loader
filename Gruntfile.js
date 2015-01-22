@@ -84,7 +84,7 @@ module.exports = function(grunt) {
           urlfunc: 'embedurl'
         },
         files: {
-          './public/css/style.css': './public/css/style.styl'
+          './public/css/style.css': ['./bower_components/html5-reset/assets/css/reset.css', './public/css/style.styl']
         }
       }
     },

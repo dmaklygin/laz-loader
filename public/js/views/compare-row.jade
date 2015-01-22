@@ -1,5 +1,12 @@
 mixin compare-row(specification, items)
   tr.compare__row
-    td.compare__cell.compare__cell_type_name= specification
-      - each item in items
-        td.compare__cell= item.specifications[specification] || '-'
+    td.compare__cell.compare__cell_type_name
+      div.compare__label= specification
+      div.compare__hidden
+        div.compare__hidden-label= specification
+    - each item in items
+      if specification == 'image'
+        td.compare__cell
+          img.compare__image(src!=item.image)
+      else
+        td.compare__cell= item[specification] || item.specifications[specification] || '—'

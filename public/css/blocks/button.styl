@@ -1,3 +1,27 @@
 .button
   display inline-block
+  vertical-align top
+
+  height: $inputHeight
+  line-height: $inputHeight
+  padding: 0 30px
+
+  box-shadow: none
+  border: 1px solid rgba(0,0,0,0.16)
+  border-radius 3px
+  outline: 0
+
+  color: #000 !important
+  background $greyColor
+
+  text-align: center
+  font-size: $inputFontSize
+  text-decoration: none
+  user-select(none)
+  cursor: pointer
+
+  &:hover
+    background darken($greyColor, 10%)
+
+
 
