@@ -66,13 +66,12 @@ module.exports = function(grunt) {
           './bower_components/jquery/dist/jquery.min.js',
           './bower_components/backbone/backbone.js',
           './node_modules/jade/runtime.js',
-          './public/js/config.js',
+          './public/js/app.js',
           './public/js/templates.js',
           './public/js/models/*.js',
           './public/js/collections/*.js',
           './public/js/views/*.js',
-          './public/js/*/*.js',
-          './public/js/app.js'
+          './public/js/*/*.js'
         ],
         dest: './public/js/all.js'
       }

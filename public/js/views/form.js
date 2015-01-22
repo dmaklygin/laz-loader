@@ -10,10 +10,19 @@ App.Views.Form = App.Views.View.extend({
   },
 
   initialize: function() {
+    if (!this.collection) {
+      throw new Error('Collection not found');
+    }
     // Caching jQ elements
     this.links = [];
     this.links.push(this.$el.find('.form__link_num_1'));
     this.links.push(this.$el.find('.form__link_num_2'));
+
+    this.button = this.$el.find('.button_type_upload');
+
+    // Listener loading event
+    this.collection.on('loading', this.disableButton, this);
+    this.collection.on('loaded', this.enableButton, this);
   },
 
   /**
@@ -28,6 +37,18 @@ App.Views.Form = App.Views.View.extend({
     App.items.loadItems(links);
 
     return false;
+  },
+
+  enableButton: function() {
+    this.toggleButton(true);
+  },
+
+  disableButton: function() {
+    this.toggleButton(false);
+  },
+
+  toggleButton: function(enable) {
+    this.button.attr('disabled', !enable);
   }
 
 });

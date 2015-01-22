@@ -11,6 +11,9 @@ App.Views.Compare = App.Views.View.extend({
     }
     // Listener to any changes
     this.collection.on('add remove reset', this.render, this);
+    // Listener loading event
+    this.collection.on('loading', this.showLoader, this);
+    this.collection.on('loaded', this.hideLoader, this);
   },
 
   serialize: function() {
@@ -31,6 +34,18 @@ App.Views.Compare = App.Views.View.extend({
       // array of items with cpecs
       itemsSpecs: this.collection.pluck('specifications')
     });
+  },
+
+  showLoader: function() {
+    this.toggleLoader(true);
+  },
+
+  hideLoader: function() {
+    this.toggleLoader(true);
+  },
+
+  toggleLoader: function(show) {
+    this.$el[show ? 'addClass' : 'removeClass']('compare_loader_show');
   }
 
 });

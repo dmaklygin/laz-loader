@@ -1,9 +1,18 @@
 .compare
   display: block
+  position relative
   margin $gapSize 0 0 0
   padding: 20px
   background: #fff
   box-shadow 0 0 0 1px rgba(0,0,0,.06)
+
+.compare_loader_show:after
+  content ''
+  position absolute
+  top 0
+  left 0
+  z-index: 1
+  background rgba(0,0,0,.06)
 
 .compare__container
   position: relative

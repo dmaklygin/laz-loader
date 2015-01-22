@@ -12,7 +12,7 @@ App.Models.Item = Backbone.Model.extend({
 
   parse: function(response) {
 
-    var model = { specifications: {} };
+    var model = { id: response.id, specifications: {} };
 
     var tempEl = document.createElement('div');
     try {
@@ -48,6 +48,10 @@ App.Models.Item = Backbone.Model.extend({
     delete tempEl;
 
     return model;
+  },
+
+  validate: function(model) {
+    return (!model.sku || !model.title);
   }
 
 });

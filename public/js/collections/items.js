@@ -3,6 +3,7 @@ App.Collections.Items = Backbone.Collection.extend({
 
   model: App.Models.Item,
 
+
   /**
    * Loading items information by link
    * @param {array} links
@@ -11,20 +12,36 @@ App.Collections.Items = Backbone.Collection.extend({
     var _this = this,
         models = [];
 
-    _this.reset();
+    if (_this.linksCounter) {
+      return;
+    }
+
+    _this.linksCounter = links.length;
 
     _this.trigger('loading');
 
     links && links.forEach(function(link) {
       _this.loadItem(link)
         .fail(function() {
-          console.log('unable to load item', link);
+          _this.linksCounter--;
+          (_this.linksCounter <= 0) && _this.onItemsLoaded(models);
         })
         .done(function(response) {
-          // adding new model to collection
-          _this.add(_.extend({ id: _.uniqueId() }, response), { parse: true });
+          // Uniq ID for current item
+          response.id = _this.hash(link);
+          // add to array
+          models.push(response);
+          _this.linksCounter--;
+          (_this.linksCounter <= 0) && _this.onItemsLoaded(models);
         });
     });
+  },
+
+  onItemsLoaded: function(models) {
+    // Set items to collection
+    this.set(models, { parse: true, validate: true });
+    // trigger 'loaded' event
+    this.trigger('loaded');
   },
 
   /**
@@ -32,7 +49,6 @@ App.Collections.Items = Backbone.Collection.extend({
    * @param {string} link
    */
   loadItem: function(link) {
-
     if (!link) {
       return $.Deferred().reject();
     }
@@ -40,10 +56,14 @@ App.Collections.Items = Backbone.Collection.extend({
     link += (link.indexOf('?') > 0 ? '&' : '?') + 'setLang=en';
 
     return App.api('item', { link: link })
+  },
+
+  hash: function(str) {
+    var hash = 0;
+    for (i = 0; i < str.length; i++) {
+      char = str.charCodeAt(i);
+      hash += char;
+    }
+    return hash;
   }
-
-
-
-
-
 });
