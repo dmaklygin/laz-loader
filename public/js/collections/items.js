@@ -37,6 +37,8 @@ App.Collections.Items = Backbone.Collection.extend({
       return $.Deferred().reject();
     }
 
+    link += (link.indexOf('?') > 0 ? '&' : '?') + 'setLang=en';
+
     return App.api('item', { link: link })
   }
 

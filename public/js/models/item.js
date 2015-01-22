@@ -40,6 +40,10 @@ App.Models.Item = Backbone.Model.extend({
         model.specifications[label] = value;
       }
     });
+    // image
+    var image = tempEl.querySelector('#productImageBox .productImage');
+    model.image = image && image.getAttribute('data-swap-image');
+
     // remove this element
     delete tempEl;
 

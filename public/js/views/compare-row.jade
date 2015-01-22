@@ -1,0 +1,5 @@
+mixin compare-row(specification, items)
+  tr.compare__row
+    td.compare__cell.compare__cell_type_name= specification
+      - each item in items
+        td.compare__cell= item.specifications[specification] || '-'
