@@ -1,7 +1,7 @@
 /**
  * Search Form View
  */
-App.Views.Form = Backbone.View.extend({
+App.Views.Form = App.Views.View.extend({
 
   el: '.search-form',
 

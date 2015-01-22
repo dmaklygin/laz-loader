@@ -10,8 +10,7 @@ window.App = {
    * @param {null|Object} options
    * @returns {Object} $.Deffered
    */
-  api: function(method, options) {
-
+  api: function (method, options) {
     options || (options = {});
     // for legacy
     method || (method = '');
@@ -24,9 +23,7 @@ window.App = {
 
     return req.promise();
   }
-
 };
-
 
 // Start Application
 $(function () {
@@ -34,4 +31,6 @@ $(function () {
   App.form = new App.Views.Form({});
   // Items Collection
   App.items = new App.Collections.Items();
+
+  App.compareView = new App.Views.Compare({ collection: App.items });
 });

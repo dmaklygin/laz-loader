@@ -1,0 +1,9 @@
+.compare__container
+  if items.length
+    .compare__table-wrapper
+      table.compare__table
+        - each specification in specifications
+          tr.compare__row
+            td.compare__cell.compare__cell_type_name= specification
+            - each item in items
+              td.compare__cell= item.specifications[specification]

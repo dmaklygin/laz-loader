@@ -13,6 +13,7 @@ module.exports = function(grunt) {
 
     'clean-pattern': {
       'js': { path: './public/js', pattern: /all(.*)?\.js/},
+      'templates': { path: './public/js', pattern: /templates(.*)?\.js/},
       'css': { path: './public/css', pattern: /style(.*)?\.css/ }
     },
 
@@ -28,17 +29,45 @@ module.exports = function(grunt) {
       }
     },
 
+    jade: {
+      compile: {
+        options: {
+          data: {
+            debug: false
+          },
+          client: true,
+          compileDebug: false,
+          amd: false,
+          namespace: 'App.Templates',
+          processName: function(filename) {
+            return filename
+              .replace('./public/js/views/', '')
+              .replace('.jade', '');
+          }
+        },
+        files: {
+          "./public/js/templates.js": ["./public/js/views/*.jade"]
+        }
+      }
+    },
+
     concat: {
       options: {
         banner: '<%= banner %>',
-        stripBanners: false
+        stripBanners: {
+          block: true,
+          line: true
+        },
+        sourceMap: true
       },
       bootstrap: {
         src: [
           './bower_components/underscore/underscore.js',
           './bower_components/jquery/dist/jquery.min.js',
           './bower_components/backbone/backbone.js',
+          './node_modules/jade/runtime.js',
           './public/js/config.js',
+          './public/js/templates.js',
           './public/js/models/*.js',
           './public/js/collections/*.js',
           './public/js/views/*.js',
@@ -64,18 +93,6 @@ module.exports = function(grunt) {
       options: {
         banner: '<%= banner %>'
       },
-      //developer: {
-      //  options: {
-      //    beautify: true,
-      //    compress: false,
-      //    mangle: {
-      //      except: ['jQuery', 'Modernizr']
-      //    }
-      //  },
-      //  files: {
-      //    './public/js/all.package.js': ['<%= concat.bootstrap.dest %>']
-      //  }
-      //},
       production: {
         options: {
           compress: false,
@@ -103,9 +120,15 @@ module.exports = function(grunt) {
         options: {
           spawn: false
         }
+      },
+      jade: {
+        files: ['./public/js/**/*.jade'],
+        tasks: ['script'],
+        options: {
+          spawn: false
+        }
       }
     }
-
   });
 
   grunt.loadNpmTasks('clean-pattern');
@@ -113,18 +136,18 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-stylus');
+  grunt.loadNpmTasks('grunt-contrib-jade');
   grunt.loadNpmTasks('grunt-contrib-watch');
 
-
   grunt.registerTask('test', ['jshint']);
+  // Jade Templates task
+  grunt.registerTask('templates', ['jade']);
   // Javascript task
-  grunt.registerTask('script', ['concat', 'uglify']);
-  // Full distribution task.
+  grunt.registerTask('script', ['templates', 'concat', 'uglify']);
+  // Full distribution task
   grunt.registerTask('dist', ['clean-pattern', 'script', 'stylus']);
   // Default task.
   grunt.registerTask('default', ['dist']);
-  // Watch task
-  //grunt.registerTask('watch', ['script']);
 
   grunt.event.on('watch', function(action, filepath, target) {
     grunt.log.writeln(target + ': ' + filepath + ' has ' + action);

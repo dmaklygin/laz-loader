@@ -4,12 +4,15 @@
 App.Models.Item = Backbone.Model.extend({
 
   defaults: {
-    title: ''
+    title: null,
+    sku: null,
+    price: null,
+    specifications: {}
   },
 
   parse: function(response) {
 
-    var model = { specification: {} };
+    var model = { specifications: {} };
 
     var tempEl = document.createElement('div');
     try {
@@ -34,7 +37,7 @@ App.Models.Item = Backbone.Model.extend({
       } else if (label == 'Price') {
         model.price = value;
       } else {
-        model.specification[label] = value;
+        model.specifications[label] = value;
       }
     });
     // remove this element
