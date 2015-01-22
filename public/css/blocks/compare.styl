@@ -6,17 +6,24 @@
   background: #fff
   box-shadow 0 0 0 1px rgba(0,0,0,.06)
 
-.compare_loader_show:after
-  content ''
-  position absolute
-  top 0
-  left 0
-  z-index: 1
-  background rgba(0,0,0,.06)
-
 .compare__container
   position: relative
   overflow: hidden
+
+.compare__loader
+  display none
+  position absolute
+  content: ''
+  top 0
+  left 0
+  width: 100%
+  height: 100%
+  padding: 50px 50%
+  z-index: 1
+  background $greyColor
+
+.compare_loader_show .compare__loader
+  display block
 
 .compare__table-wrapper
   margin: 0 0 0 225px

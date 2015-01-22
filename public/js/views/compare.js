@@ -41,7 +41,7 @@ App.Views.Compare = App.Views.View.extend({
   },
 
   hideLoader: function() {
-    this.toggleLoader(true);
+    this.toggleLoader(false);
   },
 
   toggleLoader: function(show) {
