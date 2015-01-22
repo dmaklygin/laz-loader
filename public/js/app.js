@@ -27,12 +27,11 @@ window.App = {
 
 // Start Application
 $(function () {
-
   // Items Collection
   App.items = new App.Collections.Items();
   // Create view instance
   App.form = new App.Views.Form({ collection: App.items });
   // Comparer view instance
   App.compareView = new App.Views.Compare({ collection: App.items });
-  App.compareView.render();
+
 });

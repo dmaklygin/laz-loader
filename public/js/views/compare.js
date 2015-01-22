@@ -14,6 +14,8 @@ App.Views.Compare = App.Views.View.extend({
     // Listener loading event
     this.collection.on('loading', this.showLoader, this);
     this.collection.on('loaded', this.hideLoader, this);
+
+    this.render();
   },
 
   serialize: function() {
