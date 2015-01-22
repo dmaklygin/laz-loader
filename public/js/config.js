@@ -33,4 +33,5 @@ $(function () {
   App.items = new App.Collections.Items();
 
   App.compareView = new App.Views.Compare({ collection: App.items });
+  App.compareView.render();
 });

@@ -8,3 +8,5 @@ include compare-row
         +compare-row('image', items, { type: 'image' })
         - each specKeys in specsKeys
           +compare-row(specKeys, itemsSpecs, { showLabel: true })
+  else
+    .compare__not-found No Items
