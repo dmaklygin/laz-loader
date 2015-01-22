@@ -22,12 +22,12 @@ App.Models.Item = Backbone.Model.extend({
     // searching information
     // title
     var title = tempEl.querySelector('#prod_title');
-    model.title = (title && title.innerText) || '';
+    model.title = (title && title.innerHTML) || '';
     // specifications
     _.each(tempEl.querySelectorAll('.specification-table tr'), function(row) {
       var
-        label = row.firstElementChild && row.firstElementChild.innerText,
-        value = row.lastElementChild && row.lastElementChild.innerText;
+        label = row.firstElementChild && row.firstElementChild.innerHTML,
+        value = row.lastElementChild && row.lastElementChild.innerHTML;
       // parsing attributes from row
       if (!label || !value) {
         return false;
