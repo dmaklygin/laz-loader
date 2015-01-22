@@ -6,14 +6,14 @@ App.Views.View = Backbone.View.extend({
    * Get Template name
    * @returns {string} template name
    */
-  getTemplate: function() {
+  getTemplate: function () {
     return this.template || null;
   },
 
   /**
    * Rendering View
    */
-  render: function() {
+  render: function () {
     // get template name
     var template = this.getTemplate();
 
@@ -32,7 +32,7 @@ App.Views.View = Backbone.View.extend({
     this.attach(html);
   },
 
-  serialize: function() {
+  serialize: function () {
     if (!this.model && !this.collection) {
       return {};
     }
@@ -51,15 +51,15 @@ App.Views.View = Backbone.View.extend({
     }
   },
 
-  serializeModel: function(model){
+  serializeModel: function (model) {
     return model.toJSON.apply(model, _.rest(arguments));
   },
 
-  serializeCollection: function(collection){
+  serializeCollection: function (collection) {
     return collection.toJSON.apply(collection, _.rest(arguments));
   },
 
-  attach: function(html) {
+  attach: function (html) {
     this.$el.html(html);
   }
 

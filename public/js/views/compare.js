@@ -4,7 +4,7 @@ App.Views.Compare = App.Views.View.extend({
 
   template: 'compare',
 
-  initialize: function() {
+  initialize: function () {
 
     if (!this.collection) {
       throw new Error('Collection not found');
@@ -18,13 +18,13 @@ App.Views.Compare = App.Views.View.extend({
     this.render();
   },
 
-  serialize: function() {
+  serialize: function () {
     // Specification keys
     var specifications = {};
 
-    this.collection.each(function(item) {
+    this.collection.each(function (item) {
       var specItem = item.get('specifications');
-      specItem && _.each(specItem, function(value, key) {
+      specItem && _.each(specItem, function (value, key) {
         specifications[key] = 1;
       });
     });
@@ -38,15 +38,15 @@ App.Views.Compare = App.Views.View.extend({
     });
   },
 
-  showLoader: function() {
+  showLoader: function () {
     this.toggleLoader(true);
   },
 
-  hideLoader: function() {
+  hideLoader: function () {
     this.toggleLoader(false);
   },
 
-  toggleLoader: function(show) {
+  toggleLoader: function (show) {
     this.$el[show ? 'addClass' : 'removeClass']('compare_loader_show');
   }
 

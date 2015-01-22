@@ -9,7 +9,7 @@ App.Views.Form = App.Views.View.extend({
     'click .button_type_upload': 'load'
   },
 
-  initialize: function() {
+  initialize: function () {
     if (!this.collection) {
       throw new Error('Collection not found');
     }
@@ -30,7 +30,7 @@ App.Views.Form = App.Views.View.extend({
    */
   load: function () {
     // gathering only string links
-    var links = this.links.map(function(linkEl) {
+    var links = this.links.map(function (linkEl) {
       return linkEl.val();
     });
 
@@ -39,15 +39,15 @@ App.Views.Form = App.Views.View.extend({
     return false;
   },
 
-  enableButton: function() {
+  enableButton: function () {
     this.toggleButton(true);
   },
 
-  disableButton: function() {
+  disableButton: function () {
     this.toggleButton(false);
   },
 
-  toggleButton: function(enable) {
+  toggleButton: function (enable) {
     this.button.attr('disabled', !enable);
   }
 

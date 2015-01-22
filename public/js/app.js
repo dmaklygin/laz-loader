@@ -33,5 +33,4 @@ $(function () {
   App.form = new App.Views.Form({ collection: App.items });
   // Comparer view instance
   App.compareView = new App.Views.Compare({ collection: App.items });
-
 });

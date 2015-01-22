@@ -10,21 +10,22 @@ App.Models.Item = Backbone.Model.extend({
     specifications: {}
   },
 
-  parse: function(response) {
+  parse: function (response) {
 
-    var model = { id: response.id, specifications: {} };
+    var model = {id: response.id, specifications: {}};
 
     var tempEl = document.createElement('div');
     try {
       tempEl.insertAdjacentHTML('afterBegin', response.document || '');
-    } catch (e) {}
+    } catch (e) {
+    }
 
     // searching information
     // title
     var title = tempEl.querySelector('#prod_title');
     model.title = (title && title.innerHTML) || '';
     // specifications
-    _.each(tempEl.querySelectorAll('.specification-table tr'), function(row) {
+    _.each(tempEl.querySelectorAll('.specification-table tr'), function (row) {
       var
         label = row.firstElementChild && row.firstElementChild.innerHTML,
         value = row.lastElementChild && row.lastElementChild.innerHTML;
@@ -50,8 +51,9 @@ App.Models.Item = Backbone.Model.extend({
     return model;
   },
 
-  validate: function(model) {
-    return (!model.sku || !model.title);
+  validate: function (model) {
+    return (
+    !model.sku || !model.title);
   }
 
 });
